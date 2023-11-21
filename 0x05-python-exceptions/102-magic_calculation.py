@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-import sys
+import dis
+
+from magic_calculation_102 import add, sub
 
 
-def safe_function(fct, *args):
-    try:
-        result = fct(*args)
-        return result
-    except Exception as e:
-        print(f"Exception: {e}", file=sys.stderr)
-        return None
+def magic_calculation(a, b):
+    if a < b:
+        c = add(a, b)
+        for i in range(4, 6):
+            c = add(c, i)
+        return (c)
+    else:
+        return (sub(a, b))
