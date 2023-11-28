@@ -1,0 +1,64 @@
+	Matrix Division Test
+====================================
+# This is a test for the matrix division module
+
+# import the module
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+#Test Cases
+>>> matrix = [[1,2,3], [4,5,6]]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> matrix = [[2,4,6], [8,10,12]]
+>>> print(matrix_divided(matrix, 2))
+[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+>>> matrix = [[2,4,6], [8,10,12]]
+>>> print(matrix_divided(matrix, 0))
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+>>> matrix = [[2,4,6], [8,10]]
+>>> print(matrix_divided(matrix, 2))
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+>>> matrix = [[], []]
+>>> print(matrix_divided(matrix, 2))
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = [[2,4,6], ["b",10,12]]
+>>> print(matrix_divided(matrix, 2))
+Traceback (most recent call last):
+...
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+
+>>> matrix = None
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix = "not a list"
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([[4, 8, 4], [2,10, 14], None], 4)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided(4)
+Traceback (most recent call last):
+...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+>>> print(matrix_divided(matrix, three))
+Traceback (most recent call last):
+...
+NameError: name 'three' is not defined

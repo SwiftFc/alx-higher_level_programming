@@ -1,0 +1,34 @@
+	say_my_name Test
+===============================
+# A test file for the module say_my_name
+
+# import the module
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+#Test Cases
+
+>>> say_my_name("Henry", "Dade")
+My name is Henry Dade
+
+>>> say_my_name("Henry")
+My name is Henry
+
+>>> say_my_name(5, "Dade")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name("Henry", 1)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+>>> say_my_name(Henry, "Dade")
+Traceback (most recent call last):
+...
+NameError: name 'Henry' is not defined
+
+>>> say_my_name("Henry", "Dade", "Kwesi")
+Traceback (most recent call last):
+...
+TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given

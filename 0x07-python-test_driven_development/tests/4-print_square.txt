@@ -1,0 +1,52 @@
+	 print_square Test
+===============================
+# A test file for the module print_square
+
+# import the module
+>>> print_square = __import__('4-print_square').print_square
+
+# Test cases
+
+>>> print_square(3)
+###
+###
+###
+
+>>> print_square(5)
+#####
+#####
+#####
+#####
+#####
+
+>>> print_square("five")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(four)
+Traceback (most recent call last):
+...
+NameError: name 'four' is not defined
+
+>>> print_square(5, 3)
+Traceback (most recent call last):
+...
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+>>> print_square(2.6)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(-3)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+>>> print_square(0)
+
+>>> print_square(3+6j)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer

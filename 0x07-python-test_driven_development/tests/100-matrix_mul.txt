@@ -1,0 +1,95 @@
+	matrix_mul module Test
+======================================
+# This is a doctest for the module matrix_mul
+
+#import the module
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+#Test Cases
+
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16], [0, 0]]
+
+>>> matrix_mul([[1, 2], [-3, -4]], [[-5, -6], [7, 8]])
+[[9, 10], [-13, -14]]
+
+>>> matrix_mul(2, [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> matrix_mul([[-5, -6], [7, 8]], 6)
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list
+
+>>> matrix_mul([[4,5], [3, 9], 8], [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+>>> matrix_mul([[-5, -6], [7, 8]], [[4,5], [3, 9], 8])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+
+>>> matrix_mul([], [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+>>> matrix_mul([[]], [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+>>> matrix_mul([[-5, -6], [7, 8]], [])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+>>> matrix_mul([[-5, -6], [7, 8]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+>>> matrix_mul([[3, '5', 4], [4, 7, 8]], [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([[-5, -6], [7, 8]], [[3, '5', 4], [4, 7, 8]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+>>> matrix_mul([[3, 5, 4], [4, 7, 8]], [[-5, -6], [7, 8]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+>>> matrix_mul()
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+
+>>> matrix_mul([[3,4]])
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+>>> matrix_mul([[3,4], [4,2,5]], [[2, 5,], [8, 4]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_a must be of the same size
+
+
+>>> matrix_mul([[3,4], [4,5]], [[2, 5, 8], [8, 4]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_b must be of the same size

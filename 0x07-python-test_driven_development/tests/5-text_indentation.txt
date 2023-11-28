@@ -1,0 +1,50 @@
+text_indentation module Test
+===========================================
+# This module prints two new lines after certain characters
+
+# import the module for testing
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test Cases
+
+>>> text_indentation("Hello world. Is my name Henry? Yes! My name is Henry:Kwesi")
+Hello world.
+<BLANKLINE>
+Is my name Henry?
+<BLANKLINE>
+Yes! My name is Henry:
+<BLANKLINE>
+Kwesi
+
+>>> text_indentation("Hi my name is Henry and I am learning python")
+Hi my name is Henry and I am learning python
+
+>>> text_indentation(452365879)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation("It. gets tough? But we strive: for greatness.")
+It.
+<BLANKLINE>
+gets tough?
+<BLANKLINE>
+But we strive:
+<BLANKLINE>
+for greatness.
+<BLANKLINE>
+
+>>> text_indentation(HelloWorld)
+Traceback (most recent call last):
+...
+NameError: name 'HelloWorld' is not defined
+
+>>> text_indentation(["one", "two", 3])
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+>>> text_indentation()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
