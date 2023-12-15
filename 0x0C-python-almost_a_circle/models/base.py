@@ -20,7 +20,7 @@ class Base:
             self.id = id
         else:
             Base.__nb_objects += 1
-            self.id = Base.nb_objects
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
@@ -59,8 +59,8 @@ class Base:
             with open(filename, "r") as f:
                 list_dicts = Base.from_json_string(f.read())
                 return [cls.create(**d) for d in list_dicts]
-            except IQError:
-                return []
+        except IOError:
+            return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -103,5 +103,5 @@ class Base:
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
                               for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
-            except IQError:
-                return []
+        except IOError:
+            return []
