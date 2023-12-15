@@ -36,7 +36,7 @@ class Base:
             if list_objs is None:
                 jsf.write("[]")
             else:
-                dictionaries_list = [m.to_dictionary() for m in list_objs]
+                dictionary_list = [m.to_dictionary() for m in list_objs]
                 jsf.write(Base.to_json_string(dictionary_list))
 
     @staticmethod
@@ -75,7 +75,7 @@ class Base:
                 csvfile.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "size", "height", "x", "y"]
+                    fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
