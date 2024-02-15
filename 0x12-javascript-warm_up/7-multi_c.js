@@ -6,6 +6,6 @@ if (isNaN(numXoccur)) {
 } else {
   let i;
   for (i = 0; i < numXoccur; i++) {
-  console.log('C is fun');
- }
+    console.log('C is fun');
+  }
 }
