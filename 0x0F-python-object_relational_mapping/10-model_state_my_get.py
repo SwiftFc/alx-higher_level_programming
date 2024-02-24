@@ -1,38 +1,34 @@
-#!/usr/bin/python3
-"""script that prints the State object with the name
-passed as argument from the database hbtn_0e_6_usa
-"""
-
-import MySQLdb
 from sys import argv
+from sqlalchemy import create_engine
+from model_state import Base, State
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    # establishing a secure connection to the MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3]
-    )
 
-    # createing a cursor object to execute SQL queries
-    cursor = db.cursor()
+    # Check if the number of arguments is correct
+    if len(argv) != 5:
+        print("Usage: {} <username> <password> <database> <state_name>".format(
+            argv[0]))
+        exit()
 
-    # executing the cursor to retrieve cities sorted by id
-    city_query = """SELECT cities.id, cities.name, states.name
-                    FROM states
-                    INNER JOIN cities ON states.id = cities.state_id
-                    ORDER BY cities.id ASC"""
-    cursor.execute(city_query)
+    # Creating the connection string (engine for database)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
 
-    # fetching all the results
-    cities = cursor.fetchall()
+    # Creating an instance of Session
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    # display/print them out
-    for city in cities:
-        print(city)
+    # Querying the State Objects with the specified name searched for
+    state_name = argv[4]
+    queried_state = session.query(State).filter(
+        State.name == state_name).first()
 
-    # closing the cursor and database connection
-    cursor.close()
-    db.close()
+    # Displaying the results
+    if queried_state:
+        print("{:d}".format(queried_state.id))
+    else:
+        print("Not found")
+
+    # Closing the session
+    session.close()
