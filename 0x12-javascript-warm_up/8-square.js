@@ -1,4 +1,6 @@
-t argSquare = process.argv;
+#!/usr/bin/node
+
+const argSquare = process.argv;
 const number = parseInt(argSquare[2], 10);
 
 if (argSquare[2]) {
